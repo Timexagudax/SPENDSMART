@@ -6,6 +6,8 @@ namespace SpendSmart.Models
     {
         public DbSet<Expense> Expenses { get; set; }
 
+        public DbSet<User> Users { get; set; }
+
         public SpendSmartDbContext(DbContextOptions<SpendSmartDbContext> options)
             : base(options)
         {

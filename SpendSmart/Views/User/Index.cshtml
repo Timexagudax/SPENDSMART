@@ -1,46 +1,49 @@
 ﻿@{
-    ViewData["Title"] = "Expenses";
+    ViewData["Title"] = "USER LIST";
 }
 
-@model List<Expense>
+@model List<User>
 
 <div class="text-center">
-    <h1 class="display-4">Expenses</h1>
+    <h1 class="display-4">USER LIST</h1>
     <br />
     <hr />
-    <h3>Total expenses ₦@ViewBag.Expenses</h3>
+    <h3> ₦@ViewBag.USER</h3>
     <br />
     <table class="table table-striped table-bordered">
         <thead class="table-dark">
             <tr>
-                <th>Id</th>
-                <th>Value</th>
-                <th>Description</th>
-                <th>Actions</th>
+                <th> User Id</th>
+                <th>Name</th>
+                <th>Age</th>
+                <th>Addres</th>
+                <th>Profession</th>
             </tr>
         </thead>
         <tbody>
-            @foreach (var expense in Model)
+            @foreach (var user in Model)
             {
                 <tr>
-                    <td>@expense.Id</td>
-                    <td>₦@expense.Value.ToString("N2")</td>
-                    <td>@expense.Description</td>
-                    <td>
+                    <td>@user.UserId</td>
+                    <td>@user.Name</td>
+                    <td>@user.Age</td>
+                    <td>@user.Address</td>
+                    <td>@user.profession</td>
+                   @*  <td>
                         <a asp-action="CreateEditExpense" asp-route-id="@expense.Id">Edit</a> |
                         <a asp-action="DeleteExpense" asp-route-id="@expense.Id"
                            onclick="return confirm('Are you sure you want to delete this expense?');">Delete</a> |
                         <a asp-action="Details" asp-route-id="@expense.Id">Details</a>
-                    </td>
+                    </td> *@
                 </tr>
             }
         </tbody>
     </table>
 </div>
-
 <div>
     <br />
     <hr />
     <br />
-    <a asp-controller="Home" asp-action="CreateEditExpense" class="btn btn-primary">Create Expense</a>
+    <a asp-controller="User" asp-action="Create" class="btn btn-primary">Create User</a>
 </div>
+

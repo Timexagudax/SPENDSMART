@@ -23,7 +23,13 @@
     <input class="form-control" type="text" asp-for="Size" required />
 
     <input type="hidden" asp-for="SerialNumber" />
-
-
-    <button type="submit" class="btn btn-primary mt-4">Save</button>
+    
+    <div class="mt-3">
+        <span>
+            <button type="submit" class="btn btn-success">Save</button>
+        </span>
+        <span>
+            <a asp-controller="Home" asp-action="Expenses" class="btn btn-primary">Expense List</a>
+        </span>
+    </div>
 </form>
