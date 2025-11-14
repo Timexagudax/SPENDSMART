@@ -21,11 +21,18 @@ namespace SpendSmart.Migrations
                     Color = table.Column<string>(type: "TEXT", nullable: false),
                     Quantity = table.Column<decimal>(type: "TEXT", nullable: false),
                     Size = table.Column<string>(type: "TEXT", nullable: false),
-                    SerialNumber = table.Column<string>(type: "TEXT", maxLength: 100, nullable: false)
+                    SerialNumber = table.Column<string>(type: "TEXT", maxLength: 100, nullable: false),
+                    UserId = table.Column<int>(type: "INTEGER", nullable: false) // Add this line
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Expenses", x => x.Id);
+                    table.ForeignKey( // Add this block
+                        name: "FK_Expenses_Users_UserId",
+                        column: x => x.UserId,
+                        principalTable: "Users",
+                        principalColumn: "UserId",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(

@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace SpendSmart.Models
 {
@@ -21,5 +22,10 @@ namespace SpendSmart.Models
         [Required]
         [StringLength(100)]
         public string SerialNumber { get; set; } = string.Empty;
+        [Required(ErrorMessage = "Please select a user.")]
+        public int UserId { get; set; }
+
+        [ForeignKey("UserId")]
+        public User? User { get; set; }
     }
 }

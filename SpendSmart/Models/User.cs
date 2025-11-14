@@ -21,5 +21,6 @@ namespace SpendSmart.Models
         public string Address { get; set; }
 
         public string profession { get; set; }
+        public ICollection<Expense>? Expenses { get; set; }
     }
 }

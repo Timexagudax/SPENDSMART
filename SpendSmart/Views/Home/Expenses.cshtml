@@ -1,7 +1,6 @@
 ﻿@{
     ViewData["Title"] = "Expenses";
 }
-
 @model List<Expense>
 
 <div class="text-center">
@@ -10,15 +9,18 @@
     <hr />
     <h3>Total expenses ₦@ViewBag.Expenses</h3>
     <br />
+
     <table class="table table-striped table-bordered">
         <thead class="table-dark">
             <tr>
                 <th>Id</th>
                 <th>Value</th>
                 <th>Description</th>
+                <th>User</th>
                 <th>Actions</th>
             </tr>
         </thead>
+
         <tbody>
             @foreach (var expense in Model)
             {
@@ -26,11 +28,14 @@
                     <td>@expense.Id</td>
                     <td>₦@expense.Value.ToString("N2")</td>
                     <td>@expense.Description</td>
+
+                    <!-- FIXED LINE -->
+                    <td>@(expense.User?.Name ?? "No User")</td>
+
                     <td>
                         <a asp-action="CreateEditExpense" asp-route-id="@expense.Id">Edit</a> |
-                        <a asp-action="DeleteExpense" asp-route-id="@expense.Id"
-                           onclick="return confirm('Are you sure you want to delete this expense?');">Delete</a> |
-                        <a asp-action="Details" asp-route-id="@expense.Id">Details</a>
+                        <a asp-action="DeleteExpense" asp-route-id="@expense.Id" onclick="return confirm('Are you sure you want to delete this expense?');">Delete</a> |
+                        <a asp-controller="Home" asp-action="Details" asp-route-id="@expense.Id">Details</a>
                     </td>
                 </tr>
             }
