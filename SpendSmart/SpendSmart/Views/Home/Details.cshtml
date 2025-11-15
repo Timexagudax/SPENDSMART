@@ -1,0 +1,15 @@
+﻿@model SpendSmart.Models.Expense
+
+<h2>Expense Details</h2>
+
+<div class="card mt-3" style="max-width: 500px;">
+    <div class="card-body">
+        <h5 class="card-title">@Model.Description</h5>
+        <p><strong>Value:</strong> @Model.Value.ToString("C", new System.Globalization.CultureInfo("en-NG"))</p>
+        <p><strong>Color:</strong> @Model.Color</p>
+        <p><strong>Quantity:</strong> @Model.Quantity</p>
+        <p><strong>Size:</strong> @Model.Size</p>
+        <p><strong>Serial Number:</strong> @Model.SerialNumber</p>
+        <a asp-action="Expenses" class="btn btn-primary">Back to Expenses</a>
+    </div>
+</div>
