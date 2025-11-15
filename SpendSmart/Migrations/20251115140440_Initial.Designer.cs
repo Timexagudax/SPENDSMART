@@ -10,8 +10,8 @@ using SpendSmart.Models;
 namespace SpendSmart.Migrations
 {
     [DbContext(typeof(SpendSmartDbContext))]
-    [Migration("20251114122309_AddUserExpenseRelationship")]
-    partial class AddUserExpenseRelationship
+    [Migration("20251115140440_Initial")]
+    partial class Initial
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

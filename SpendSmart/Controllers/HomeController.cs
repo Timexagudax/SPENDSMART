@@ -1,5 +1,7 @@
 using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.EntityFrameworkCore;
 using SpendSmart.Models;
 
 namespace SpendSmart.Controllers
@@ -23,7 +25,7 @@ namespace SpendSmart.Controllers
         public IActionResult Expenses()
         {
 
-            var allExpenses = _context.Expenses.ToList();
+            var allExpenses = _context.Expenses.Include(e => e.User).ToList();
 
             var totalExpenses = allExpenses.Sum(x => x.Value);
 
@@ -32,8 +34,11 @@ namespace SpendSmart.Controllers
         }
         public IActionResult CreateEditExpense(int? id)
         {
-            if(id != null)
+            ViewBag.Users = new SelectList(_context.Users, "UserId", "Name");
+
+            if (id != null)
             {
+
                 //editing -> load an expense by id
                 var expenseInDb = _context.Expenses.SingleOrDefault(expense => expense.Id == id);
                 return View(expenseInDb);
